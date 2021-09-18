@@ -1,0 +1,5 @@
+<mat-radio-group>
+    <mat-radio-button *ngFor="let type of carTypes" (click)="updateType(type)">
+        <span> {{ type }}</span>
+    </mat-radio-button>
+</mat-radio-group>

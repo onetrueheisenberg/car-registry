@@ -1,0 +1,17 @@
+<button mat-button [matMenuTriggerFor]="menu">Select Action</button>
+<mat-menu #menu="matMenu">
+    <button mat-button
+    *ngFor="let item of menuListItems" 
+    (click)="clickMenuItem(item)" 
+    [disabled]="item.isDisabled">
+<span> {{ item.menuLinkText }}</span>
+</button>
+</mat-menu>
+<!-- <mat-menu #clickmenu="matMenu">
+    <button mat-button
+            *ngFor="let item of menuListItems" 
+            (click)="clickMenuItem(item)" 
+            [disabled]="item.isDisabled">
+      <span> {{ item.menuLinkText }}</span>
+    </button>
+  </mat-menu>  -->
