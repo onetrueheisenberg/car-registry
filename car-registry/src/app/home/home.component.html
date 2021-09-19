@@ -4,7 +4,7 @@
     *ngFor="let item of menuListItems" 
     (click)="clickMenuItem(item)" 
     [disabled]="item.isDisabled">
-<span> {{ item.menuLinkText }}</span>
+<div> {{ item.menuLinkText }}</div>
 </button>
 </mat-menu>
 <!-- <mat-menu #clickmenu="matMenu">

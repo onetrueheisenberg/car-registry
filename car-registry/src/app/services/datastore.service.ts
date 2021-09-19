@@ -64,9 +64,14 @@ export class DatastoreService {
   }
 
   public addNewCar(car: Car): void {
-    const updatedCarsStore= {
+    // this.cars.value.push(car);
+    this.updateCarsArray(car);
+  }
+
+  public updateCarsArray(car: Car) {
+    const updatedCarsStore= [
       ...this.cars.value
-    };
+    ];
     updatedCarsStore.push(car);
     this.cars.next(updatedCarsStore);
   }
