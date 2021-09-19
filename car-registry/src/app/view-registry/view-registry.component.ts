@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { FormControl, FormGroup } from '@angular/forms';
 import { Subscription } from 'rxjs';
 import { Car } from '../models/car.model';
 import { DatastoreService } from '../services/datastore.service';
@@ -15,6 +16,8 @@ export class ViewRegistryComponent implements OnInit {
   public displayedColumns: string[] = [];
   public isExtendedView: boolean = false;
   public views: string[] = ['Basic View', 'Extended View'];
+  public searchForm: FormGroup;
+  public searchFormSubscription: Subscription;
 
   constructor(private dataStoreService: DatastoreService) { }
 
@@ -23,6 +26,7 @@ export class ViewRegistryComponent implements OnInit {
       console.log(value);
       this.cars = value;
     });
+    this.initForm();
   }
 
   public updateView(view: string) {
@@ -32,6 +36,17 @@ export class ViewRegistryComponent implements OnInit {
     } else {
       this.displayedColumns = ['type', 'model', 'color', 'license number'];
     }
+  }
+
+  private initForm(): void {
+    this.searchForm = new FormGroup({
+      'search': new FormControl('')
+    });
+    this.searchFormSubscription = this.searchForm.valueChanges.subscribe(value => {
+      // this.car = this.mapFormFieldsToObject(value);
+      // this.areAllFieldsFilled = this.checkIfAllFieldsAreFilled(this.car);
+      console.log(value)
+    });
   }
 
 }
